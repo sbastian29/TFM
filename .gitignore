@@ -1,0 +1,27 @@
+# --- ENTORNOS VIRTUALES ---
+venv/
+.env/
+.env
+
+# --- ARCHIVOS DE CONFIGURACIÓN PRIVADA ---
+*.env
+*.secret
+*.key
+
+# --- DOCKER ---
+docker-compose.yml
+Dockerfile
+.dockerignore
+docker/
+
+# --- ARCHIVOS TEMPORALES ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# --- OTROS ---
+.idea/
+.vscode/
+*.sqlite3
