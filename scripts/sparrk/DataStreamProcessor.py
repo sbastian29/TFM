@@ -28,16 +28,16 @@ logger = logging.getLogger(__name__)
 # ==============================================================================
 # CONSTANTES POR DEFECTO
 # ==============================================================================
-DEFAULT_KAFKA_BROKER = "localhost:9092"  # Cambiado de IP Docker a localhost
+DEFAULT_KAFKA_BROKER = "localhost:9092" 
 DEFAULT_KAFKA_TOPIC = "topic_telecom"
 DEFAULT_APP_NAME = "TELECOM_TO_POSTGRES"
 DEFAULT_KAFKA_PACKAGE = "org.apache.spark:spark-sql-kafka-0-10_2.13:4.0.0"
 DEFAULT_POSTGRES_PACKAGE = "org.postgresql:postgresql:42.5.0"
-DEFAULT_CHECKPOINT_PATH = "C:/tmp/spark-checkpoints/telecom"  # Ruta absoluta Windows
+DEFAULT_CHECKPOINT_PATH = "C:/tmp/spark-checkpoints/telecom"  
 
 # Configuración de PostgreSQL
 POSTGRES_CONFIG = {
-    "url": "jdbc:postgresql://localhost:5433/tfm_database",  # Puerto 5433 como en tu docker
+    "url": "jdbc:postgresql://localhost:5433/tfm_database",  
     "user": "tfm_user",
     "password": "tfm_password_2024",
     "driver": "org.postgresql.Driver"
@@ -146,7 +146,7 @@ def leer_stream_kafka(spark: SparkSession, broker: str, topic: str) -> DataFrame
              .option("kafka.bootstrap.servers", broker)
              .option("subscribe", topic)
              .option("startingOffsets", "earliest")
-             .option("failOnDataLoss", "false")  # Más tolerante a errores
+             .option("failOnDataLoss", "false")  
              .load()
     )
     return df
@@ -358,7 +358,7 @@ def main():
               .writeStream
               .option("checkpointLocation", checkpoint_dir)
               .foreachBatch(procesar_micro_batch)
-              .trigger(processingTime="10 seconds")  # Procesar cada 10 segundos
+              .trigger(processingTime="10 seconds")  
               .start()
         )
 

@@ -1,13 +1,12 @@
 -- =========================================
--- CREACIÓN DE TABLAS PARA ANÁLISIS DE CHURN (CORREGIDO)
+-- CREACIÓN DE TABLAS PARA ANÁLISIS DE CHURN 
 -- =========================================
 
 -- IMPORTANTE: customer_id NO es SERIAL porque viene de los datos de Kafka
 
 -- Tabla principal de clientes
 CREATE TABLE customers (
-    customer_id INTEGER PRIMARY KEY,  -- NO SERIAL, viene de Kafka
-    age INTEGER,
+    customer_id INTEGER PRIMARY KEY,  
     gender VARCHAR(10),
     location VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
